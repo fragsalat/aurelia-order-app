@@ -1,0 +1,43 @@
+<template>
+    <h1>Welcome</h1>
+    <p if.bind="loading">
+        Loading orders ...
+    </p>
+    <p if.bind="!loading && !orders.length">
+        We could't load any order
+    </p>
+    <a rout-href="route: 'createOrder'">
+        Create
+    </a>
+    <table if.bind="!loading && orders.length">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Article</th>
+                <th>SKU</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr repeat.for="order of orders">
+                <td>${order.id}</td>
+                <td>${order.articleName}</td>
+                <td>${order.sku}</td>
+                <td>${order.quantity}</td>
+                <td>${order.price}</td>
+                <td>${order.status}</td>
+                <td>
+                    <a route-href="route: editOrder; params.bind: {id: order.id}">
+                        Edit
+                    </a>
+                    <a route-href="route: deleteOrder; params.bind: {id: order.id}">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</template>

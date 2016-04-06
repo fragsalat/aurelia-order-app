@@ -1,0 +1,10 @@
+<template>
+    <div if.bind="!deleting">
+        <p>Do you really want to delete the order?</p>
+        <button click.delegate="abort()">No</button>
+        <button click.delegate="proceed()">Yes</button>
+    </div>
+    <div if.bind="deleting">
+        <span class="fa fa-spinner fa-spin"></span>
+    </div>
+</template>
